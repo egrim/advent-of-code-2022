@@ -1,4 +1,5 @@
 import io
+import itertools
 import pathlib
 
 import pytest
@@ -26,12 +27,9 @@ def get_priority(char):
 
 
 def three_lines_at_a_time(input_file):
-    line_generator = iter(stripped_input_lines(input_file))
-    while True:
-        try:
-            yield next(line_generator), next(line_generator), next(line_generator)
-        except RuntimeError or StopIteration:
-            break
+    line_generator = stripped_input_lines(input_file)
+    while lines := tuple(itertools.islice(line_generator, 3)):
+        yield lines
 
 
 def first_star(input_file):
