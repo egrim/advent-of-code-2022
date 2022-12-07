@@ -56,13 +56,13 @@ def test_roshambo():
     paper = RoShamBo.PAPER
     scissors = RoShamBo.SCISSORS
 
-    assert RoShamBo['A'] == RoShamBo.ROCK
-    assert RoShamBo['B'] == RoShamBo.PAPER
-    assert RoShamBo['C'] == RoShamBo.SCISSORS
+    assert RoShamBo["A"] == RoShamBo.ROCK
+    assert RoShamBo["B"] == RoShamBo.PAPER
+    assert RoShamBo["C"] == RoShamBo.SCISSORS
 
-    assert RoShamBo['X'] == RoShamBo.ROCK
-    assert RoShamBo['Y'] == RoShamBo.PAPER
-    assert RoShamBo['Z'] == RoShamBo.SCISSORS
+    assert RoShamBo["X"] == RoShamBo.ROCK
+    assert RoShamBo["Y"] == RoShamBo.PAPER
+    assert RoShamBo["Z"] == RoShamBo.SCISSORS
 
     assert rock == rock
     assert rock > scissors
@@ -96,11 +96,11 @@ def second_star(input_file):
             first, second = line.split()
             them = RoShamBo[first]
             match second:
-                case 'X':  # lose
+                case "X":  # lose
                     me = them.get_loser()
-                case 'Y':  # draw
+                case "Y":  # draw
                     me = them
-                case 'Z':  # win
+                case "Z":  # win
                     me = them.get_winner()
                 case _:
                     raise ValueError
@@ -134,5 +134,5 @@ def test_second_star(test_input):
     assert example_second_star_output == second_star(test_input)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

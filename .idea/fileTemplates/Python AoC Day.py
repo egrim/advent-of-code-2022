@@ -39,5 +39,5 @@ def test_second_star(test_input):
     assert example_second_star_output == second_star(test_input)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

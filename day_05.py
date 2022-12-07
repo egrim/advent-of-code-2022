@@ -28,14 +28,14 @@ CRATE_MOVES = re.compile(r"move (?P<moves>\d+) from (?P<from>\d+) to (?P<to>\d+)
 
 def chunk(string, n):
     it = iter(string)
-    while chunk := ''.join(itertools.islice(it, n)):
+    while chunk := "".join(itertools.islice(it, n)):
         yield chunk
 
 
 def parse_starting_positions(input_file):
     crates = collections.defaultdict(list)
     for line in input_file:
-        line = line.rstrip('\n')
+        line = line.rstrip("\n")
         if crate_number_match := CRATE_NUMBERS.match(line):
             break
         for num, crate in enumerate(chunk(line, 4), 1):
@@ -44,7 +44,7 @@ def parse_starting_positions(input_file):
                 crates[num].append(crate[1:-1])
     else:
         raise ValueError  # reached end of file before finding crate number row
-    assert int(crate_number_match['crate_num']) == len(crates)
+    assert int(crate_number_match["crate_num"]) == len(crates)
     return crates
 
 
@@ -52,26 +52,26 @@ def first_star(input_file):
     crates = parse_starting_positions(input_file)
 
     for line in input_file:
-        line = line.rstrip('\n')
+        line = line.rstrip("\n")
         if crate_move_match := CRATE_MOVES.match(line):
             moves, frm, to = map(int, crate_move_match.groups())
             for _ in range(moves):
                 crates[to].insert(0, crates[frm].pop(0))
 
-    return ''.join(crates[i+1][0] for i in range(len(crates)))
+    return "".join(crates[i + 1][0] for i in range(len(crates)))
 
 
 def second_star(input_file):
     crates = parse_starting_positions(input_file)
 
     for line in input_file:
-        line = line.rstrip('\n')
+        line = line.rstrip("\n")
         if crate_move_match := CRATE_MOVES.match(line):
             moves, frm, to = map(int, crate_move_match.groups())
             crates[to][0:0] = crates[frm][0:moves]
             crates[frm] = crates[frm][moves:]
 
-    return ''.join(crates[i+1][0] for i in range(len(crates)))
+    return "".join(crates[i + 1][0] for i in range(len(crates)))
 
 
 # noinspection DuplicatedCode
@@ -103,5 +103,5 @@ def stripped_input_lines(input_file):
     return (line.strip() for line in input_file)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

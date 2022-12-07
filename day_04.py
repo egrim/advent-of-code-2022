@@ -19,11 +19,14 @@ example_second_star_output = 4
 def first_star(input_file):
     count = 0
     for line in stripped_input_lines(input_file):
-        first_elf, second_elf = line.split(',')
-        first_elf_start, first_elf_stop = map(int, first_elf.split('-'))
-        second_elf_start, second_elf_stop = map(int, second_elf.split('-'))
-        if ((first_elf_start <= second_elf_start and second_elf_stop <= first_elf_stop) or
-            (second_elf_start <= first_elf_start and first_elf_stop <= second_elf_stop)):
+        first_elf, second_elf = line.split(",")
+        first_elf_start, first_elf_stop = map(int, first_elf.split("-"))
+        second_elf_start, second_elf_stop = map(int, second_elf.split("-"))
+        if (
+            first_elf_start <= second_elf_start and second_elf_stop <= first_elf_stop
+        ) or (
+            second_elf_start <= first_elf_start and first_elf_stop <= second_elf_stop
+        ):
             count += 1
 
     return count
@@ -32,11 +35,14 @@ def first_star(input_file):
 def second_star(input_file):
     count = 0
     for line in stripped_input_lines(input_file):
-        first_elf, second_elf = line.split(',')
-        first_elf_start, first_elf_stop = map(int, first_elf.split('-'))
-        second_elf_start, second_elf_stop = map(int, second_elf.split('-'))
-        if ((first_elf_start <= second_elf_start and second_elf_start <= first_elf_stop) or
-            (second_elf_start <= first_elf_start and first_elf_start <= second_elf_stop)):
+        first_elf, second_elf = line.split(",")
+        first_elf_start, first_elf_stop = map(int, first_elf.split("-"))
+        second_elf_start, second_elf_stop = map(int, second_elf.split("-"))
+        if (
+            first_elf_start <= second_elf_start and second_elf_start <= first_elf_stop
+        ) or (
+            second_elf_start <= first_elf_start and first_elf_start <= second_elf_stop
+        ):
             count += 1
 
     return count
@@ -71,5 +77,5 @@ def stripped_input_lines(input_file):
     return (line.strip() for line in input_file)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -18,10 +18,10 @@ example_second_star_output = 70
 
 
 def get_priority(char):
-    if 'a' <= char <= 'z':
-        return 1 + ord(char) - ord('a')
-    elif 'A' <= char <= 'Z':
-        return 27 + ord(char) - ord('A')
+    if "a" <= char <= "z":
+        return 1 + ord(char) - ord("a")
+    elif "A" <= char <= "Z":
+        return 27 + ord(char) - ord("A")
     else:
         raise ValueError
 
@@ -79,5 +79,5 @@ def stripped_input_lines(input_file):
     return (line.strip() for line in input_file)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

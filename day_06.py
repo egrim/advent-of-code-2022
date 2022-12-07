@@ -9,19 +9,20 @@ examples = [
     ("bvwbjplbgvbhsrlpgdmjqwftvncz", 5),
     ("nppdvjthqldpwncqszvftbrmjlhg", 6),
     ("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10),
-    ("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)
+    ("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11),
 ]
 
 
 def find_marker(input, consecutive_distincts):
     input = input.read()
     i = 0
-    while len(n := input[i:i+consecutive_distincts]) == consecutive_distincts:
+    while len(n := input[i : i + consecutive_distincts]) == consecutive_distincts:
         if len(set(n)) == consecutive_distincts:
             return i + consecutive_distincts
         i += 1
     else:
         raise ValueError
+
 
 def first_star(input):
     return find_marker(input, 4)
@@ -57,5 +58,5 @@ def stripped_input_lines(input_file):
     return (line.strip() for line in input_file)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
